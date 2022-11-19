@@ -1,12 +1,15 @@
 
 import './App.css';
+import Counter from './Counter';
 
 function App() {
   return (
     <div className="App">
-     usestate 12135364564564
-     dasdsafdsfs432fslfs,gl;3eqwrew
+     usestate 
+     <p>Another line</p>
+     <Counter />
     </div>
+
   );
 }
 
