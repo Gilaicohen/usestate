@@ -1,31 +1,37 @@
 import { useState } from "react";
-function Counter() {
-    const [count,setCount]=useState(1)
+function Counter(props) {
+    const {delta} = props;
+    const {maxNumber} = props;
+    const [count, setCount]= useState(0);
+       
+
     function incr(){
-      setCount(
-        function(oldCount){
-            return oldCount + 1
-        }
-      )
-        console.log(count);  
-    }
-    function incr2(){
+
         setCount(
-            function(oldCount2){
-                return 0
+            function(oldCount){
+                if((oldCount +delta)< maxNumber){
+                 return oldCount +delta;
             }
-        )
-        console.log(count)
+            else{ return 0}
+        }
+        )   
     }
+    function reset(){
+        setCount(0) 
+    }
+     
 
-  return (
-    <div >
-    <h1>Counter</h1>
-    <p>Counter is at {count}</p>
-    <button onClick={incr}>click to add 1 to Counter </button>
-    <button onClick={incr2}>click to reset Counter </button>
-    </div>
-  );
-}
 
-export default Counter;
+    return (
+      <div>
+       <h1>Counter</h1>
+       
+       <p><div class="button">{count}</div></p>
+       <button class="button"  onClick={incr}>Click to add {delta} to counter.</button> <p></p>
+       <button class="button"  onClick={reset}>Reset counter</button>
+      </div>
+    );
+} 
+  
+  
+  export default Counter;
