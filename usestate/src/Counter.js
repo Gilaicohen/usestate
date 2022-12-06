@@ -1,23 +1,36 @@
-import { useState } from "react";
+import { useState, useEffect} from "react";
 function Counter(props) {
-    const {delta} = props;
-    const {maxNumber} = props;
+    const {delta,maxNumber,getReset,needToReset,getMax , maxValue} = props;
     const [count, setCount]= useState(0);
        
-
+    useEffect(()=>{
+        if(needToReset){
+            setCount(0)
+            getReset(false)
+        }
+    },[needToReset, getReset])
+   useEffect(()=>{
+        if(count>maxValue){
+            getMax(count)
+        }
+   },[getMax,maxValue,count])
     function incr(){
-
         setCount(
             function(oldCount){
                 if((oldCount +delta)< maxNumber){
-                 return oldCount +delta;
+                   // getMax(oldcount + delta)
+                    return (oldCount +delta)
+                
+            
+                 
             }
             else{ return 0}
         }
         )   
     }
     function reset(){
-        setCount(0) 
+        //getReset(true)
+     setCount(0) 
     }
      
 
