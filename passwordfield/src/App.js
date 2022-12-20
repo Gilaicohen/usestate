@@ -6,8 +6,8 @@ import './App.css';
 
 function App() {
 
+  const [input, setInput] = useState('');
   const[isable,setisable]=useState(true)
-  const [input, setInput] = useState("");
   function handleChange(e){
    setInput(e.target.value) ///מכניס ערך לתוך האינפוט
   }
@@ -19,7 +19,7 @@ function App() {
     <div className="App">
       <h1>Welcome</h1>  
       <p><h3>Please enter password:</h3></p>
-      <input type = "string" value = {input} onChange = {handleChange}/>
+      <input type = "string" value = {input} onChange = {handleChange}></input>
 
       <button  disabled={isable} >Submit</button> 
       
