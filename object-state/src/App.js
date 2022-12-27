@@ -2,8 +2,9 @@ import './App.css';
 import { useState } from 'react';
 
 function App() {
-
-  const [listofusers] = useState([{
+  const [Name, setName] =useState('')
+  const [Email, setEmail] =useState('')
+  const [listofusers,setlistofusers] = useState( [{
     "id": 1,
     "name": "Leanne Graham",
     "username": "Bret",
@@ -234,9 +235,32 @@ function App() {
     }
   }])
   
+  function handleAddUser(e){
+    setName(e.target.value)
+    console.log(Name)
+  }
+  function handleAddEmail(e){
+    setEmail(e.target.value)
+    console.log(Email)
+  }
+  function AddItemToList(){
+    let addRow = {
+      name: Name,
+      email: Email }
+
+
+    setlistofusers([...listofusers,addRow])
+
+    console.log(listofusers)
+  }
 
   return (
     <div className="App">
+
+     <h3>Welcome To List Application</h3>
+     <p>Enter Name: <input  value={Name} onChange= {handleAddUser}/></p>
+     <p>Enter Email: <input  value={Email} onChange= {handleAddEmail}/></p>
+     <p><button onClick={AddItemToList} >Add user to list</button></p>
 
      <h3>List of users</h3>
      <table>
